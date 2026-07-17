@@ -12,17 +12,13 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && ln -sf /usr/bin/python3 /usr/local/bin/python
 
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
-COPY image/install_kdbx.sh /opt/install_kdbx.sh
-COPY image/install_aquery.sh /opt/install_aquery.sh
-COPY image/with_kx_license.sh /opt/kx/with-kx-license
+COPY --from=ghcr.io/astral-sh/uv:0.11.29@sha256:eb2843a1e56fd9e30c7276ce1a52cba86e64c7b385f5e3279a0e08e02dd058fc /uv /usr/local/bin/uv
+COPY --chmod=755 image/install_kdbx.sh image/install_aquery.sh /opt/
+COPY --chmod=755 image/with_kx_license.sh /opt/kx/with-kx-license
 
-RUN chmod +x /opt/install_kdbx.sh /opt/install_aquery.sh /opt/kx/with-kx-license \
-    && KDBX_HOME=/opt/kx /opt/install_kdbx.sh \
-    && PATH=/root/.local/bin:$PATH /opt/install_aquery.sh \
-    && uv pip install --system "pykx==4.0.0" \
-    && test -x /opt/kx/bin/q \
-    && test -x /root/.local/bin/a2q
+RUN /opt/install_kdbx.sh \
+    && /opt/install_aquery.sh \
+    && uv pip install --system "pykx==4.0.0"
 
 WORKDIR /work
 ENTRYPOINT ["/opt/kx/with-kx-license"]
