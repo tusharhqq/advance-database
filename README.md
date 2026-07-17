@@ -1,6 +1,6 @@
 # kdb+ Community License
 
-1. [Sign up with KX](https://developer.kx.com/products/kdb-x/install) and download your community license.
+1. [Sign up with KX](https://developer.kx.com/products/kdb-x/install) and copy your community license from the kx website.
 2. Create your local environment file:
    ```sh
    cp .env.example .env
