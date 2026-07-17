@@ -1,13 +1,15 @@
 # kdb+ Community License
 
+A kdb+ license is required.
+
 1. [Sign up with KX](https://developer.kx.com/products/kdb-x/install) and copy your community license from the kx website.
 2. Create your local environment file:
    ```sh
    cp .env.example .env
    ```
-3. Base64-encode the license and replace the placeholder in `.env`:
-   ```sh
-   base64 < /path/to/kc.lic | tr -d '\n'
+3. Open `.env` and paste the license you copied from the KX website after `KDB_LICENSE_B64=`:
+   ```env
+   KDB_LICENSE_B64=paste_your_license_here
    ```
 
 <img width="2746" height="1436" alt="KX license sign-up page" src="https://github.com/user-attachments/assets/6107d3ed-5f82-4cad-806b-47e656972786" />
