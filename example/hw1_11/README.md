@@ -20,21 +20,19 @@ Example expects: s1 = -3, s2 = -60.
 
 See `optimization_notes.md`.
 
-## Run on Modal (plain `aquery` image)
+## Run on Modal
+
+The Modal secret `kx-license` must contain `KDB_LICENSE_B64`.
 
 ```bash
-modal run aquery/example/run_hw1_11.py
+modal run example/hw1_11/run_on_modal.py
 ```
 
-This mounts `mountain/hw1_11` at `/work`, compiles with `a2q`, and executes with licensed `q`.
+This builds the x86 Linux Dockerfile in Modal, deletes any previous generated q file, compiles `max_loss.a`, and executes the result with licensed q.
 
-## Compile locally (Docker)
+## Run locally with Docker
 
-```bash
-docker build --platform=linux/amd64 -t aquery:local -f dockerr/aquery/Dockerfile aquery
-docker run --rm --platform=linux/amd64 \
-  -v "$PWD/mountain/hw1_11:/work" -w /work aquery:local \
-  a2q -c -a 1 -o max_loss.generated.q max_loss.a
-```
+Use the instructions for your platform:
 
-`a2q` needs no KX license. See [`dockerr/aquery/README.md`](../../dockerr/aquery/README.md).
+- [x86-64 Linux](../../aquery/docker-x86-linux/README.md)
+- [macOS with Docker Desktop](../../aquery/docker-mac/README.md)

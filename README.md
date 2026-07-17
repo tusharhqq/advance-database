@@ -1,17 +1,13 @@
-# kdb+ Community License
+# Advanced Database
 
-A kdb+ license is required.
+Docker environments and examples for database coursework and experiments.
 
-1. [Sign up with KX](https://developer.kx.com/products/kdb-x/install) and copy your community license from the kx website.
-2. Create your local environment file:
-   ```sh
-   cp .env.example .env
-   ```
-3. Open `.env` and paste the license you copied from the KX website after `KDB_LICENSE_B64=`:
-   ```env
-   KDB_LICENSE_B64=paste_your_license_here
-   ```
+## Repository contents
 
-<img width="2746" height="1436" alt="KX license sign-up page" src="https://github.com/user-attachments/assets/6107d3ed-5f82-4cad-806b-47e656972786" />
+- `aquery/` — Build and run local AQuery Docker images on [macOS](aquery/docker-mac/README.md) or [x86-64 Linux](aquery/docker-x86-linux/README.md).
+- [`reprozip/`](reprozip/README.md) — Run ReproZip with Docker on macOS or x86-64 Linux.
+- [`example/`](example/) — Example queries, datasets, and supporting scripts.
 
-<img width="2824" height="1402" alt="KX license download page" src="https://github.com/user-attachments/assets/518a167e-7f36-4e87-a470-7013c5ed84c4" />
+## Getting started
+
+Choose a component above and follow the instructions in its README. Platform requirements, licenses, and setup steps are documented alongside each component.

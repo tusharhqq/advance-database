@@ -7,7 +7,7 @@ CREATE TABLE ticks(ID STRING, date INT, endofdayprice FLOAT)
 LOAD DATA INFILE "example_ticks.csv" INTO TABLE ticks FIELDS TERMINATED BY ","
 
 SELECT ID,
-       max(endofdayprice - mins(prev(endofdayprice))) AS worst_loss
+       min(endofdayprice - maxs(prev(endofdayprice))) AS worst_loss
 FROM ticks
 ASSUMING ASC ID, ASC date
 GROUP BY ID

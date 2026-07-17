@@ -27,3 +27,15 @@ docker build --platform=linux/amd64 -t aquery:mac \
   -f aquery/docker-mac/Dockerfile aquery
 docker run --rm -it --platform=linux/amd64 --env-file .env aquery:mac
 ```
+
+Regenerate and execute the HW1 Q11 q file:
+
+```bash
+rm -f example/hw1_11/max_loss.generated.q
+docker run --rm --platform=linux/amd64 --env-file .env \
+  -v "$PWD/example/hw1_11:/work" aquery:mac \
+  a2q -c -a 1 -o max_loss.generated.q max_loss.a
+docker run --rm --platform=linux/amd64 --env-file .env \
+  -v "$PWD/example/hw1_11:/work" aquery:mac \
+  q max_loss.generated.q
+```
