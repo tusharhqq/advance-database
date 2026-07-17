@@ -1,0 +1,1 @@
+- Use `jj` (Jujutsu) for version control instead of `git`; this repo is a colocated jj+git checkout.
